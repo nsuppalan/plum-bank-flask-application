@@ -1,0 +1,8 @@
+Flask
+flask_restful
+pymongo
+bcrypt
+pytest
+pyopenssl
+flask_swagger
+flask_swagger_ui

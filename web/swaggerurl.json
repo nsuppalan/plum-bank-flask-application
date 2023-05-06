@@ -1,0 +1,471 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Plum_API ",
+    "description": "API routes",
+    "version": "0.1"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5000"
+    }
+  ],
+  "paths": {
+    "/delete": {
+      "post": {
+        "description": "Delete All account. Drop USER DB",
+        "responses": {
+          "200": {
+            "description": "Delete All Accounts - Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200"
+                },
+                "examples": {
+                  "0": {
+                    "value": "{\"secured\":\"Plum Bank App Users cleared\"}\n"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "http://localhost:5000"
+          }
+        ]
+      },
+      "servers": [
+        {
+          "url": "http://localhost:5000"
+        }
+      ]
+    },
+    "/balance": {
+      "post": {
+        "description": "Retrieve balances for a given account",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/balance_body"
+              },
+              "examples": {
+                "0": {
+                  "value": "{\r\n            \"password\": \"secure\",\r\n            \"account_id\": \"BANK\"\r\n}"
+                },
+                "1": {
+                  "value": "{\r\n            \"password\": \"secure\",\r\n            \"account_id\": \"1\"\r\n}"
+                },
+                "2": {
+                  "value": "{\r\n            \"password\": \"secure\",\r\n            \"account_id\": \"11\"\r\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Check Account Balance - Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200_1"
+                },
+                "examples": {
+                  "0": {
+                    "value": "{\"Debt\":0,\"Own\":0,\"account_id\":\"BANK\",\"user_name\":\"BANK user\"}\n"
+                  },
+                  "1": {
+                    "value": "{\"Debt\":0,\"Own\":0,\"account_id\":\"1\",\"user_name\":\"Arisha Barron\"}\n"
+                  },
+                  "2": {
+                    "value": "{\"Debt\":0,\"Own\":0,\"account_id\":\"11\",\"user_name\":\"Arisha Barron\"}\n"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "http://localhost:5000"
+          }
+        ]
+      },
+      "servers": [
+        {
+          "url": "http://localhost:5000"
+        }
+      ]
+    },
+    "/transfer": {
+      "post": {
+        "description": "Transfer amounts between any two accounts, including those owned by different customers",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/transfer_body"
+              },
+              "examples": {
+                "0": {
+                  "value": "{\r\n    \"password\": \"secure\",\r\n    \"account_id\": \"1\",\r\n    \"to\": \"11\",\r\n    \"amount\": 200\r\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Account Transfer - Response ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200_2"
+                },
+                "examples": {
+                  "0": {
+                    "value": "{\"msg\":\"Amount added successfully to account\",\"status\":200}\n"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "http://localhost:5000"
+          }
+        ]
+      },
+      "servers": [
+        {
+          "url": "http://localhost:5000"
+        }
+      ]
+    },
+    "/add": {
+      "post": {
+        "description": "Add Money To Account",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/add_body"
+              },
+              "examples": {
+                "0": {
+                  "value": "{\r\n    \"password\": \"secure\",\r\n    \"account_id\": \"1\",\r\n    \"amount\": 2000\r\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Add Money To Account - Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200_2"
+                },
+                "examples": {
+                  "0": {
+                    "value": "{\"msg\":\"Amount Added Successfully to account\",\"status\":200}\n"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "http://localhost:5000"
+          }
+        ]
+      },
+      "servers": [
+        {
+          "url": "http://localhost:5000"
+        }
+      ]
+    },
+    "/payloan": {
+      "post": {
+        "description": "Pay Loan Amount To Account",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/payloan_body"
+              },
+              "examples": {
+                "0": {
+                  "value": "{\r\n    \"password\": \"secure\",\r\n    \"account_id\": \"1\",\r\n    \"amount\": 200\r\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Pay Loan Ammount - Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200_2"
+                },
+                "examples": {
+                  "0": {
+                    "value": "{\"msg\":\"Loan Paid\",\"status\":200}\n"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "http://localhost:5000"
+          }
+        ]
+      },
+      "servers": [
+        {
+          "url": "http://localhost:5000"
+        }
+      ]
+    },
+    "/takeloan": {
+      "post": {
+        "description": "Take Loan Amount Request",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/takeloan_body"
+              },
+              "examples": {
+                "0": {
+                  "value": "{\r\n    \"password\": \"secure\",\r\n    \"account_id\": \"1\",\r\n    \"amount\": 500\r\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Take Loan Amount - Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200_2"
+                },
+                "examples": {
+                  "0": {
+                    "value": "{\"msg\":\"Loan Added to Your Account\",\"status\":200}\n"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "http://localhost:5000"
+          }
+        ]
+      },
+      "servers": [
+        {
+          "url": "http://localhost:5000"
+        }
+      ]
+    },
+    "/register": {
+      "post": {
+        "description": "Register New Account - Request",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/register_body"
+              },
+              "examples": {
+                "0": {
+                  "value": "{\r\n    \"user_name\": \"BANK user\",\r\n    \"password\": \"secure\",\r\n    \"account_id\": \"BANK\"\r\n}"
+                },
+                "1": {
+                  "value": "{\r\n    \"user_name\": \"Arisha Barron\",\r\n    \"password\": \"secure\",\r\n    \"account_id\": \"1\"\r\n}"
+                },
+                "2": {
+                  "value": "{\r\n    \"user_name\": \"Arisha Barron\",\r\n    \"password\": \"secure\",\r\n    \"account_id\": \"11\"\r\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Register New Account - Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200_2"
+                },
+                "examples": {
+                  "0": {
+                    "value": "{\"msg\":\"You successfully signed up for the API\",\"status\":200}\n"
+                  },
+                  "1": {
+                    "value": "{\"msg\":\"You successfully signed up for the API\",\"status\":200}\n"
+                  },
+                  "2": {
+                    "value": "{\"msg\":\"You successfully signed up for the API\",\"status\":200}\n"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "http://localhost:5000"
+          }
+        ]
+      },
+      "servers": [
+        {
+          "url": "http://localhost:5000"
+        }
+      ]
+    }
+  },
+  "components": {
+    "schemas": {
+      "inline_response_200": {
+        "type": "object",
+        "properties": {
+          "secured": {
+            "type": "string"
+          }
+        }
+      },
+      "balance_body": {
+        "type": "object",
+        "properties": {
+          "password": {
+            "type": "string"
+          },
+          "account_id": {
+            "type": "string"
+          }
+        }
+      },
+      "inline_response_200_1": {
+        "type": "object",
+        "properties": {
+          "Debt": {
+            "type": "integer"
+          },
+          "account_id": {
+            "type": "string"
+          },
+          "user_name": {
+            "type": "string"
+          },
+          "Own": {
+            "type": "integer"
+          }
+        }
+      },
+      "transfer_body": {
+        "type": "object",
+        "properties": {
+          "password": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "integer"
+          },
+          "account_id": {
+            "type": "string"
+          },
+          "to": {
+            "type": "string"
+          }
+        }
+      },
+      "inline_response_200_2": {
+        "type": "object",
+        "properties": {
+          "msg": {
+            "type": "string"
+          },
+          "status": {
+            "type": "integer"
+          }
+        }
+      },
+      "add_body": {
+        "type": "object",
+        "properties": {
+          "password": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "integer"
+          },
+          "account_id": {
+            "type": "string"
+          }
+        }
+      },
+      "payloan_body": {
+        "type": "object",
+        "properties": {
+          "password": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "integer"
+          },
+          "account_id": {
+            "type": "string"
+          }
+        }
+      },
+      "takeloan_body": {
+        "type": "object",
+        "properties": {
+          "password": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "integer"
+          },
+          "account_id": {
+            "type": "string"
+          }
+        }
+      },
+      "register_body": {
+        "type": "object",
+        "properties": {
+          "password": {
+            "type": "string"
+          },
+          "account_id": {
+            "type": "string"
+          },
+          "user_name": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
